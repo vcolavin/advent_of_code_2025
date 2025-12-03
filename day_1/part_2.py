@@ -32,10 +32,9 @@ for (index, row) in enumerate(rows):
   if (end == 0):
     zeroes += 1
   elif ((end > 0 and start < 0) or (end < 0 and start > 0)):
-    # indiczeroesates we traversed zero
     zeroes += 1
 
   count += zeroes
-  print(start, end, zeroes)
+  print(start, end, zeroes, count)
 
 print(count)
