@@ -11,7 +11,19 @@ def count_matches(n):
   return abs(n) // 100
 
 def zeroes_between(start, end):
-  return abs(count_matches(end) - count_matches(start))
+  if start > end:
+    start -=1
+  else:
+    start += 1
+
+  zeroes =  abs(count_matches(start) - count_matches(end))
+
+  # if (end == 0):
+  #   zeroes += 1
+  # elif ((end > 0 and start < 0) or (end < 0 and start > 0)):
+  #   zeroes += 1
+
+  return zeroes
 
 end = current_position
 for (index, row) in enumerate(rows):
@@ -28,11 +40,6 @@ for (index, row) in enumerate(rows):
     end -= number
 
   zeroes = zeroes_between(start, end)
-
-  if (end == 0):
-    zeroes += 1
-  elif ((end > 0 and start < 0) or (end < 0 and start > 0)):
-    zeroes += 1
 
   count += zeroes
   print(start, end, zeroes, count)
