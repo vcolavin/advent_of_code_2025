@@ -10,7 +10,7 @@ rows = csv.reader(csv_file)
 def count_matches(n):
   return abs(n) // 100
 
-def mod_diff(start, end):
+def zeroes_between(start, end):
   return abs(count_matches(end) - count_matches(start))
 
 end = current_position
@@ -27,27 +27,15 @@ for (index, row) in enumerate(rows):
   else:
     end -= number
 
-  diff = mod_diff(start, end)
-
-
-  print(f"{index + 1}.", end="")
-  print("start", start, "end", end)
+  zeroes = zeroes_between(start, end)
 
   if (end == 0):
-    print("adding one for ending at zero")
-    diff += 1
-  elif ((abs(start) != start) != (abs(end) != end)):
-    print("adding one for traversing zero")
-    diff += 1
+    zeroes += 1
+  elif ((end > 0 and start < 0) or (end < 0 and start > 0)):
+    # indiczeroesates we traversed zero
+    zeroes += 1
 
-  count += diff
-
-
-  print("diff", diff, "count", count)
-
+  count += zeroes
+  print(start, end, zeroes)
 
 print(count)
-
-
-# how many numbers between (n and m] are divisible by 100?
-#
